@@ -1,4 +1,4 @@
-import store from '../../../store/dummy'
+import store from '../../../store/mysql'
 import ctrl from './controller'
 
 export default ctrl(store)

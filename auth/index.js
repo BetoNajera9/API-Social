@@ -4,12 +4,12 @@ import config from '../config/envServer'
 import error from '../utils/error'
 
 const sign = (data) => {
-	return jwt.sign(data, config.secret)
+	return jwt.sign(data, config.jwt.secret)
 }
 
 const verify = (token) => {
 	try {
-		return jwt.verify(token, config.secret)
+		return jwt.verify(token, config.jwt.secret)
 	} catch (err) {
 		console.log(err)
 	}
@@ -40,6 +40,9 @@ const check = {
 		if (decoded.id !== owner) {
 			throw new error('You cant do this', 401)
 		}
+	},
+	logged: (req) => {
+		const decoded = decodeHeader(req)
 	},
 }
 

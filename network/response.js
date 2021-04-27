@@ -6,7 +6,8 @@ const responseSucces = (req, res, message, status) => {
 	})
 }
 
-const responseError = (req, res, message, status) => {
+const responseError = (req, res, message, status, details) => {
+	console.log(details)
 	res.status(status ?? 500).send({
 		error: true,
 		status: status ?? 'Internal server error',

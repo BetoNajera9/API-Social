@@ -10,7 +10,6 @@ router.post('/login', async (req, res, next) => {
 		const token = await controller.login(req.body.username, req.body.password)
 		response.succes(req, res, token, 200)
 	} catch (err) {
-		next()
 		response.error(req, res, 'Innvalid information', 500, err)
 	}
 })
