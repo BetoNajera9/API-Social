@@ -45,9 +45,8 @@ const list = async (table) => {
 const get = async (table, id) => {
 	return new Promise((res, rej) => {
 		connection.query(`SELECT * FROM ${table} WHERE id='${id}'`, (err, data) => {
-			console.log(err)
+			console.error(err)
 			if (err) return rej(err)
-			console.log(data)
 			res(data)
 		})
 	})
@@ -108,6 +107,8 @@ export default {
 	get,
 	upsert,
 	query,
+	insert,
+	update,
 }
 
 handleConnection()

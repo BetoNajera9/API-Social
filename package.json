@@ -5,7 +5,9 @@
 	"main": "src/server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon --exec babel-node -r dotenv/config server"
+		"dev": "nodemon --exec babel-node -r dotenv/config api/index",
+		"dev:mysql": "nodemon --exec babel-node -r dotenv/config mysql/index",
+		"dev:post": "nodemon --exec babel-node -r dotenv/config post/index"
 	},
 	"keywords": [
 		"nodejs",
@@ -24,6 +26,7 @@
 		"nodemon": "^2.0.7"
 	},
 	"dependencies": {
+		"axios": "^0.21.1",
 		"bcrypt": "^5.0.1",
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",

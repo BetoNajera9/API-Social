@@ -11,7 +11,7 @@ const verify = (token) => {
 	try {
 		return jwt.verify(token, config.jwt.secret)
 	} catch (err) {
-		console.log(err)
+		console.error(err)
 	}
 }
 

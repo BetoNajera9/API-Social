@@ -24,13 +24,15 @@ export default (injectedStore) => {
 			authData.password = await bcrypt.hash(data.password, 5)
 		}
 
-		console.log(authData)
-
-		return store.upsert(TABLA, authData)
+		return store.upsert(TABLA, authData, false)
 	}
 
 	const login = async (username, password) => {
-		const data = await store.query(TABLA, { username: username })
+		const data = await store.query(TABLA, { username })
+		if (!data.password || !data.username) {
+			data.password = data.body.password
+			data.username = data.body.username
+		}
 		const equals = await bcrypt.compare(password, data.password)
 
 		if (equals === true) {

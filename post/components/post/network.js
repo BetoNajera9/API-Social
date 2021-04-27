@@ -2,7 +2,7 @@ import express from 'express'
 
 import response from '../../../network/response'
 import controller from './index'
-import secure from '../user/secure'
+import secure from '../../../api/components/user/secure'
 
 const router = express.Router()
 

@@ -31,14 +31,13 @@ export default (injectedStore) => {
 				exist = true
 			} else {
 				user.id = nanoid()
-			}
-
-			if (body.password || body.username) {
-				await auth.upsert({
-					id: user.id,
-					username: user.username,
-					password: body.password,
-				})
+				if (body.password || body.username) {
+					await auth.upsert({
+						id: user.id,
+						username: user.username,
+						password: body.password,
+					})
+				}
 			}
 
 			return store.upsert(TABLA, user, exist)
@@ -52,8 +51,6 @@ export default (injectedStore) => {
 	}
 
 	const follow = (from, to) => {
-		console.log(from)
-		console.log(to)
 		return store.upsert(
 			`${TABLA}_follow`,
 			{
