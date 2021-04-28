@@ -7,6 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "nodemon --exec babel-node -r dotenv/config api/index",
 		"dev:mysql": "nodemon --exec babel-node -r dotenv/config mysql/index",
+		"dev:cache": "nodemon --exec babel-node -r dotenv/config cache/index",
 		"dev:post": "nodemon --exec babel-node -r dotenv/config post/index"
 	},
 	"keywords": [
@@ -31,7 +32,8 @@
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"mysql": "^2.18.1",
-		"nanoid": "^3.1.22"
+		"nanoid": "^3.1.22",
+		"redis": "^3.1.2"
 	},
 	"babel": {
 		"presets": [

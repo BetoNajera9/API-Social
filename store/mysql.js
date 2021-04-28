@@ -102,13 +102,6 @@ const query = (table, query, join) => {
 	})
 }
 
-export default {
-	list,
-	get,
-	upsert,
-	query,
-	insert,
-	update,
-}
+export { list, get, upsert, query, insert, update }
 
 handleConnection()

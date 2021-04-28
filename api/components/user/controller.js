@@ -4,14 +4,28 @@ import auth from '../auth'
 
 const TABLA = 'user'
 
-export default (injectedStore) => {
+export default (injectedStore, injectedCache) => {
 	let store = injectedStore
+	let cache = injectedCache
 	let exist = false
+
 	if (!store) {
 		store = require('../../../store/dummy')
 	}
+	if (!cache) {
+		cache = require('../../../store/dummy')
+	}
 
-	const list = () => {
+	const list = async () => {
+		let users = await cache.list(TABLA)
+		if (!users) {
+			console.log('No estaba en cache')
+			users = await store.list(TABLA)
+			cache.upsert(TABLA, users)
+		} else {
+			console.log('Traemos de cache')
+		}
+
 		return store.list(TABLA)
 	}
 
